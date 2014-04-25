@@ -1,7 +1,7 @@
 <?php 
 class Etudiant{
-$nom;
-$prenom;
+private $nom;
+private $prenom;
 function setNom($nom){
 $this->nom=$nom;
 }

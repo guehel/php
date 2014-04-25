@@ -1,0 +1,61 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ * Description of class
+ *
+ * @author Guehel
+ */
+class Adresse {
+    private $vueAdresse;
+    private $adresse;
+    private $bdAdresse;
+    private $message;
+    public function __contruct(){}//
+    public function setbdAdresse($bdAdresse){
+        $this->bdAdresse = $bdAdresse;
+    }
+    public function getAdresse(){
+        return $this->adresse;
+    }
+    
+    public function setAdresse($adresse){
+     $this->adresse = $adresse;
+    }
+     public function getVueAdresse(){
+        return $this->vueAdresse;
+    }
+    public postAdresse($adresse, $choisi){
+        $this->adresse = $adresse
+        if(!$choisi){
+            $this->saisirAdresse();
+        }else {
+           $reussie=$this->bdAdresse->save($this->adresse);
+           if($reussie){$this->message ='Sauvegarde adresser reussie'; }else {
+           $this->message ='Sauvegarde  adresse non-reussie';
+           $this->bdAdresse = null;
+           }
+           $this->vueAdresse->afficherMessage($this->message);
+        }
+    }
+    public function saisirAdresse(){
+        if($this->adresse == null){
+        $this->vueAdresse = new VueAdresse();
+        $this->vueAdresse->afficher();
+        }elseif ($this->adresse->valide) {}{
+            $this->adresse = $this->bdAdresse->find($this->adresse);
+             if($this->adresse != null){
+                 $this->vueAdresse->confirmer($this->adresse);
+             }
+            
+        }
+        
+    }
+    //put your code here
+}
