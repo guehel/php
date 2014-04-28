@@ -46,41 +46,104 @@ class ADRESSE
      * @access public
      * @var Integer
      */
-    public $id_adresse = null;
+    private $id_adresse = null;
 
     /**
      * Short description of attribute no_civic
      *
-     * @access public
+     * @access private
      * @var Integer
      */
-    public $no_civic = null;
+    private $no_civic = null;
 
     /**
      * Short description of attribute rue
      *
-     * @access public
+     * @access private
      * @var Integer
      */
-    public $rue = null;
+    private $rue = null;
 
     /**
      * Short description of attribute ville
      *
-     * @access public
-     * @var Integer
+     * @access private
+     * @var String
      */
-    public $ville = null;
+    private $ville = null;
+    private $province = null;
 
     /**
-     * Short description of attribute code_postal
-     *
-     * @access public
-     * @var Integer
+     * @access private
+     * @var String
      */
     public $code_postal = null;
+    
+    public function getId_adresse() {
+        return $this->id_adresse;
+    }
 
+    public function getNo_civic() {
+        return $this->no_civic;
+    }
+
+    public function getRue() {
+        return $this->rue;
+    }
+
+    public function getVille() {
+        return $this->ville;
+    }
+
+    public function getProvince() {
+        return $this->province;
+    }
+
+    public function getCode_postal() {
+        return $this->code_postal;
+    }
+
+    public function setId_adresse( $id_adresse) {
+        $this->id_adresse = $id_adresse;
+    }
+
+    public function setNo_civic( $no_civic) {
+        $this->no_civic = $no_civic;
+    }
+
+    public function setRue( $rue) {
+        $this->rue = $rue;
+    }
+
+    public function setVille( $ville) {
+        $this->ville = $ville;
+    }
+
+    public function setProvince($province) {
+        $this->province = $province;
+    }
+
+    public function setCode_postal( $code_postal) {
+        $this->code_postal = $code_postal;
+    }
+
+    
     // --- OPERATIONS ---
+    public function toArray(){
+        $adresse_tableau = array(
+            "id_adresse"=>$this->id_adresse,
+            "no_civic" => $this->no_civic,
+            "rue" => $this->rue,
+            "ville" => $this->ville,
+            "code_postal" => $this->code_postal,
+            "province" =>$this->province
+        );
+       return  $adresse_tableau; 
+    }
+
+    public function valider($tableau) {
+       return true; 
+    }
 
 } /* end of class ADRESSE */
 
